@@ -11,7 +11,7 @@
           <label for="InputForPassword">Senha</label>
           <input type="password" name="password" class="form-control custom-input" maxlength="6" id="InputForPassword">
         </div>
-        <button type="submit" class="btn btn-primary custom-btn">Login</button>
+        <button type="submit" class="btn btn-primary custom-btn">Entrar</button>
       </form>
     </div>
   </div>

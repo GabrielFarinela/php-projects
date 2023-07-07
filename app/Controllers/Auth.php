@@ -14,8 +14,8 @@ class Auth extends BaseController
         $model = model(UserModel::class);
 
         $user = $model->where([
-            'user_email' => $email,
-            'user_password' => $password
+            'email' => $email,
+            'senha' => $password
         ])->first();
 
         if (isset($user)) {
@@ -23,9 +23,9 @@ class Auth extends BaseController
                 $session = session();
 
                 $session_data = [
-                    'user_id'       => $user['user_id'],
-                    'user_name'     => $user['user_name'],
-                    'user_email'    => $user['user_email'],
+                    'id'       => $user['id'],
+                    'nome'     => $user['nome'],
+                    'email'    => $user['email'],
                     'logged_in'     => TRUE
                 ];
 
