@@ -33,7 +33,11 @@ $routes->get('/', 'Home::index');
 
 $routes->post('/authenticate', 'Auth::login');
 
-$routes->get('/dashboard', 'Auth::dashboard', ['filter'=>'authGuard']);
+$routes->post('/authenticate-register', 'Auth::register');
+
+$routes->get('/register', 'Auth::registerView');
+
+$routes->get('/dashboard', 'Auth::dashboardView', ['filter'=>'authGuard']);
 
 $routes->get('/logout', 'Auth::logout');
 

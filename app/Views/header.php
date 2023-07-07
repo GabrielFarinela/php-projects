@@ -21,7 +21,7 @@
             transform: translate(-50%, -50%);
         }
         .custom-btn {
-            margin-top: 10px;
+            margin: 10px 0;
             width: 100%;
             background-color: #495057;
             color: 343a40;
@@ -35,6 +35,16 @@
         }
         .custom-container {
             height: 100vh;
+        }
+        .custom-register {
+            text-decoration: none;
+            color: black;
+            font-weight: bold;
+        }
+        .custom-register:hover {
+            text-decoration: underline;
+            color: black;
+            font-weight: bold;
         }
     </style>
 </head>

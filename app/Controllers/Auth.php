@@ -9,7 +9,7 @@ class Auth extends BaseController
     public function login()
     {
         $email = $this->request->getPost('email');
-        $password = $this->request->getPost('password');
+        $password = $this->request->getPost('senha');
 
         $model = model(UserModel::class);
 
@@ -37,10 +37,44 @@ class Auth extends BaseController
         }
     }
 
-    public function dashboard()
+    public function register()
+    {
+        $name = $this->request->getPost('nome');
+        $institution = $this->request->getPost('instituicao');
+        $email = $this->request->getPost('email');
+        $password = $this->request->getPost('senha');
+
+        $model = model(UserModel::class);
+
+        $existingUser = $model->where('email', $email)->first();
+        if ($existingUser) {
+            return redirect()->to('/register');
+        }
+
+        $userData = [
+            'nome' => $name,
+            'email' => $email,
+            'senha' => $password,
+            'instituicao' => $institution
+        ];
+
+        $model->insert($userData);
+
+        return redirect()->to('/');
+    }
+
+
+    public function dashboardView()
     {
         return view('header') .
             view('dashboard') .
+            view('footer');
+    }
+
+    public function registerView()
+    {
+        return view('header') .
+            view('register') .
             view('footer');
     }
 
