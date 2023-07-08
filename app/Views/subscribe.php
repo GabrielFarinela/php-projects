@@ -1,19 +1,74 @@
 <head>
   <style>
+    .custom-container {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      border-radius: 40px;
+      gap: 30px;
+    }
+    .custom-buttom{
+      text-decoration: none;
+      color: #000;
+      width: 400px;
+      margin-top: 30px;
+    }
+    .custom-buttom:hover {
+        color: #fff;
+    }
+    .custom-file {
+      margin-top: 30px;
+    }
+    .custom-title {
+      margin-bottom: 20px;
+    }
   </style>
 </head>
 
-<div class="d-flex flex-column border border-dark p-5 custom-container">
-  <h2><?php echo $evento['nome']; ?></h3>
-  <div>
-    <p><strong>Local: </strong><?php echo $evento['espaco']; ?></p>
-    <p><strong>Cidade: </strong><?php echo $evento['cidade']; ?> - <strong>País: </strong><?php echo $evento['pais']; ?></p>
-    <p><strong>Sigla: </strong><?php echo $evento['silga']; ?></p>
-    <p><strong>Início: </strong><?php echo date('d/m/Y', strtotime($evento['data_inicio'])); ?> - <strong>Fim: </strong><?php echo date('d/m/Y', strtotime($evento['data_fim'])); ?></p></p>
-    <p><strong>Fim das inscrições: </strong><?php echo date('d/m/Y', strtotime($evento['fim_inscricao'])); ?></p>
-  </div>
-  <div class="d-flex flex-column justify-content-center align-items-center custom-buttons">
-    <a href="<?=base_url().'dashboard'?>"><button type="button" class="btn btn-outline-dark custom-buttom">Confirmar</button></a>
-    <a href="<?=base_url().'dashboard'?>"><button type="button" class="btn btn-outline-dark custom-buttom">Voltar</button></a>
-  </div>
+<div class="custom-container">
+  <h2 class="custom-title">Inscrição</h2>
+  <form action="<?= base_url().'subscribeForm' ?>" method="post">
+    <p><strong>Nome do evento: </strong><?php echo $evento['nome']; ?></p>
+    <p><strong>Nome: </strong><?php echo $usuario['nome']; ?></p>
+    <p><strong>Email: </strong><?php echo $usuario['email']; ?></p>
+    <p><strong>Instituição: </strong><?php echo $usuario['instituicao']; ?></p>
+
+    <div class="form-group">
+      <label for="inscricao">Como deseja fazer a inscrição?</label>
+      <select name="inscricao" id="inscricao">
+        <option value="autor">Autor</option>
+        <option value="ouvinte">Ouvinte</option>
+      </select>
+    </div>
+
+    <div class="form-group" id="file-upload">
+      <div class="custom-file">
+        <input type="file" class="custom-file-input" id="pdf" name="pdf">
+        <label class="custom-file-label" for="pdf">Escolher arquivo</label>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <button type="submit" class="btn btn-outline-dark custom-buttom">Confirmar</button>
+      <a href="<?= base_url().'details?id=' . $_GET['id'] . '&idUser=' . $_GET['idUser'] ?>">
+        <button type="button" class="btn btn-outline-dark custom-buttom">Voltar</button>
+      </a>
+    </div>
+  </form>
 </div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    var selectInput = document.getElementById("inscricao");
+    var fileUpload = document.getElementById("file-upload");
+
+    selectInput.addEventListener("change", function() {
+      if (this.value === "autor") {
+        fileUpload.style.display = "block";
+      } else {
+        fileUpload.style.display = "none";
+      }
+    });
+  });
+</script>

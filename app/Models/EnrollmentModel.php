@@ -16,6 +16,6 @@ class EnrollmentModel extends Model
     ];
 
     public function buscaInscriçõesPorId($id) {
-        return $this->findAll($id);
+        return $this->where('usuario', $id)->findAll();
     }
 }

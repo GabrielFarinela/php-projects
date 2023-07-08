@@ -13,4 +13,8 @@ class UserModel extends Model
         'senha', 
         'instituicao'
     ];
+
+    public function buscaUsuariosPorId($id) {
+        return $this->find($id);
+    }
 }

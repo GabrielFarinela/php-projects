@@ -27,7 +27,7 @@
 </head>
 
 <div class="d-flex flex-column border border-dark p-5 custom-container">
-  <h2><?php echo $evento['nome']; ?></h3>
+  <h2><?php echo $evento['nome']; ?></h2>
   <div>
     <p><strong>Local: </strong><?php echo $evento['espaco']; ?></p>
     <p><strong>Cidade: </strong><?php echo $evento['cidade']; ?> - <strong>País: </strong><?php echo $evento['pais']; ?></p>
@@ -45,7 +45,7 @@
           <?php endif; ?>
       <?php endforeach; ?>
       <?php if (!$inscrito): ?>
-          <a href="<?=base_url().'subscribe'?>">
+          <a href="<?= base_url().'subscribe?id=' . $_GET['id'] . '&idUser=' . $_GET['idUser'] ?>">
               <button type="button" class="btn btn-outline-dark custom-buttom">Realizar inscrição</button>
           </a>
       <?php endif; ?>
