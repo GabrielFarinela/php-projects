@@ -64,14 +64,6 @@ class Auth extends BaseController
         return redirect()->to('/');
     }
 
-
-    public function dashboardView()
-    {
-        return view('header') .
-            view('dashboard') .
-            view('footer');
-    }
-
     public function registerView()
     {
         return view('header') .

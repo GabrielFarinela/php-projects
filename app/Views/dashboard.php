@@ -28,6 +28,16 @@
         .custom-table-name {
             user-select: none;
         }
+        .custom-item-table-1 {
+            text-decoration: underline green;
+            color: black;
+            font-weight: bold;
+        }
+        .custom-item-table-2 {
+            text-decoration: underline red;
+            color: black;
+            font-weight: bold;
+        }
     </style>
 </head>
 <div class="custom-container">
@@ -37,51 +47,92 @@
             <strong class="custom-name">Bem vindo(a) <?=$session->get('nome');?></strong>
         </div>
         <div>
-            <button type="button" class="btn btn-outline-dark custom-buttom"><a href="<?=base_url().'logout'?>">Sair</a></button>
+            <a class="custom-buttom" href="<?=base_url().'logout'?>"><button type="button" class="btn btn-outline-dark">Sair</button></a>
         </div>
     </div>
     <div class="d-flex flex-column custom-table">
         <div>
-            <h3 class="text-success custom-table-name">Conferências em andamento:</h3>
-            <table class="table table-hover">
+            <h3 class="text-success custom-table-name">Conferências em aberto:</h3>
+            <table class="table table-hover table-bordered">
                 <thead>
                     <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">First</th>
-                        <th scope="col">Last</th>
-                        <th scope="col">Handle</th>
+                        <th scope="col" style="width: 5%">Id</th>
+                        <th scope="col" style="width: 60%">Nome</th>
+                        <th scope="col" style="width: 10%">Cidade</th>
+                        <th scope="col" style="width: 10%">País</th>
+                        <th scope="col" style="width: 15%">Tipo de Inscrição</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                    </tr>
+                    <?php $count = 1; ?>
+                    <?php foreach ($eventos as $evento): ?>
+                        <?php if (strtotime($evento['data_fim']) >= time()): ?>
+                            <?php $temInscricao = false; ?>
+                            <?php foreach ($inscricoes as $inscricao): ?>
+                                <?php if ($inscricao['id'] == $evento['id']): ?>
+                                    <?php $temInscricao = true; ?>
+                                    <tr>
+                                        <th scope="row"><?php echo $evento['id']; ?></th>
+                                        <td><a class="custom-item-table-1" href="<?=base_url().'details?id=' .$evento['id'] ?>"><?php echo $evento['nome']; ?></a></td>
+                                        <td><?php echo $evento['cidade']; ?></td>
+                                        <td><?php echo $evento['pais']; ?></td>
+                                        <td><strong><?php echo $inscricao['tipo']; ?></strong></td>
+                                    </tr>
+                                <?php endif; ?>
+                            <?php endforeach; ?>
+                            <?php if (!$temInscricao): ?>
+                                <tr>
+                                    <th scope="row"><?php echo $evento['id']; ?></th>
+                                    <td><a class="custom-item-table-1" href="<?=base_url().'details?id=' .$evento['id'] ?>"><?php echo $evento['nome']; ?></a></td>
+                                    <td><?php echo $evento['cidade']; ?></td>
+                                    <td><?php echo $evento['pais']; ?></td>
+                                    <td>Aberto para inscrições</td>
+                                </tr>
+                            <?php endif; ?>
+                            <?php $count++; ?>
+                        <?php endif; ?>
+                    <?php endforeach; ?>
                 </tbody>
             </table>
         </div>
-        <div>
-            <h3 class="text-danger custom-table-name">Conferências encerradas:</h3>
-            <table class="table table-hover table-dark">
-                <thead>
+
+        <?php $count = 1; $eventos_encerrados = false; ?>
+        <?php foreach ($eventos as $evento): ?>
+            <?php if (strtotime($evento['data_fim']) < time()): ?>
+                <?php if (!$eventos_encerrados): ?>
+                    <?php $eventos_encerrados = true; ?>
+                    <div>
+                        <h3 class="text-danger custom-table-name">Conferências encerradas:</h3>
+                        <table class="table table-hover table-bordered">
+                            <thead>
+                                <tr>
+                                    <th scope="col" style="width: 5%">Id</th>
+                                    <th scope="col" style="width: 60%">Nome</th>
+                                    <th scope="col" style="width: 10%">Cidade</th>
+                                    <th scope="col" style="width: 10%">País</th>
+                                    <th scope="col" style="width: 15%">Tipo de Inscrição</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                <?php endif; ?>
                     <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">First</th>
-                        <th scope="col">Last</th>
-                        <th scope="col">Handle</th>
+                        <th scope="row"><?php echo $evento['id']; ?></th>
+                        <td><a class="custom-item-table-2" href="<?=base_url().'details?id=' .$evento['id'] ?>"><?php echo $evento['nome']; ?></a></td>
+                        <td><?php echo $evento['cidade']; ?></td>
+                        <td><?php echo $evento['pais']; ?></td>
+                        <td>Encerrado</td>
                     </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+                    <?php $count++; ?>
+            <?php endif; ?>
+        <?php endforeach; ?>
+<?php if ($eventos_encerrados): ?>
+                    </tbody>
+                </table>
+            </div>
+<?php endif; ?>
+
     </div>
-</div>
+</div> 
+
+   
+

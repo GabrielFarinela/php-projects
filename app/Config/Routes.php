@@ -37,7 +37,13 @@ $routes->post('/authenticate-register', 'Auth::register');
 
 $routes->get('/register', 'Auth::registerView');
 
-$routes->get('/dashboard', 'Auth::dashboardView', ['filter'=>'authGuard']);
+$routes->get('/dashboard', 'Dashboard::dashboard', ['filter'=>'authGuard']);
+
+$routes->get('/details', 'Details::showEvent', ['filter'=>'authGuard']);
+
+$routes->get('/subscribe', 'Subscribe::subscribeView', ['filter'=>'authGuard']);
+
+$routes->post('/subscribeForm', 'Subscribe::registerEnrollment', ['filter'=>'authGuard']);
 
 $routes->get('/logout', 'Auth::logout');
 
