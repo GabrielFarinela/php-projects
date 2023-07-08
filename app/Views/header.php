@@ -14,38 +14,6 @@
             background-color: #f8f9fa;
             color: #343a40;
         }
-        .custom-dash {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-        }
-        .custom-btn {
-            margin: 10px 0;
-            width: 100%;
-            background-color: #495057;
-            color: 343a40;
-            border: none;
-        }
-        .custom-btn:hover {
-            background-color: #6c757d;
-        }
-        .custom-input {
-            width: 100%;
-        }
-        .custom-container {
-            height: 100vh;
-        }
-        .custom-register {
-            text-decoration: none;
-            color: black;
-            font-weight: bold;
-        }
-        .custom-register:hover {
-            text-decoration: underline;
-            color: black;
-            font-weight: bold;
-        }
     </style>
 </head>
 
