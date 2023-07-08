@@ -22,13 +22,19 @@
             margin-top: 80px;
             gap: 50px
         }
+        .custom-name {
+            user-select: none;
+        }
+        .custom-table-name {
+            user-select: none;
+        }
     </style>
 </head>
 <div class="custom-container">
     <div class="d-flex flex-row justify-content-around align-items-center">
         <div>
             <img src="<?=$session->get('avatar');?>" class="rounded-circle img-thumbnail custom-img">
-            <strong>Bem vindo(a) <?=$session->get('nome');?></strong>
+            <strong class="custom-name">Bem vindo(a) <?=$session->get('nome');?></strong>
         </div>
         <div>
             <button type="button" class="btn btn-outline-dark custom-buttom"><a href="<?=base_url().'logout'?>">Sair</a></button>
@@ -36,7 +42,7 @@
     </div>
     <div class="d-flex flex-column custom-table">
         <div>
-            <h3 class="text-success">Conferências em andamento:</h3>
+            <h3 class="text-success custom-table-name">Conferências em andamento:</h3>
             <table class="table table-hover">
                 <thead>
                     <tr>
@@ -57,7 +63,7 @@
             </table>
         </div>
         <div>
-            <h3 class="text-danger">Conferências encerradas:</h3>
+            <h3 class="text-danger custom-table-name">Conferências encerradas:</h3>
             <table class="table table-hover table-dark">
                 <thead>
                     <tr>
