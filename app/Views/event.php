@@ -39,7 +39,7 @@
     <?php if (strtotime($evento['data_inicio']) >= strtotime(date('Y-m-d'))): ?>
       <?php $inscrito = false; ?>
       <?php foreach ($inscricoes as $inscricao): ?>
-          <?php if ($inscricao['id'] == $evento['id']): ?>
+          <?php if ($inscricao['evento'] == $evento['id']): ?>
               <?php $inscrito = true; ?>
               <p class="text-success custom-text">Você já está inscrito neste evento como <strong><?php echo $inscricao['tipo']; ?>!</strong></p>
           <?php endif; ?>

@@ -69,7 +69,7 @@
                         <?php if (strtotime($evento['data_fim']) >= time()): ?>
                             <?php $temInscricao = false; ?>
                             <?php foreach ($inscricoes as $inscricao): ?>
-                                <?php if ($inscricao['id'] == $evento['id']): ?>
+                                <?php if ($inscricao['evento'] == $evento['id']): ?>
                                     <?php $temInscricao = true; ?>
                                     <tr>
                                         <th scope="row"><?php echo $evento['id']; ?></th>

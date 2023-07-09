@@ -27,26 +27,28 @@
 </head>
 
 <div class="d-flex flex-column border border-dark p-5 custom-container">
-  <h2 class="custom-title">Inscrição</h2>
-  <form action="<?= base_url().'subscribeForm' ?>" method="post">
+  <div>
+    <h2 class="custom-title">Inscrição</h2>
     <p><strong>Nome do evento: </strong><?php echo $evento['nome']; ?></p>
     <p><strong>Nome: </strong><?php echo $usuario['nome']; ?></p>
     <p><strong>Email: </strong><?php echo $usuario['email']; ?></p>
     <p><strong>Instituição: </strong><?php echo $usuario['instituicao']; ?></p>
-
+  </div>
+  <form action="<?= base_url().'subscribeForm' ?>" method="post">
     <div class="form-group">
       <label for="inscricao">Como deseja fazer a inscrição?</label>
       <select name="inscricao" id="inscricao">
-        <option value="autor">Autor</option>
-        <option value="ouvinte">Ouvinte</option>
+        <option value="Autor">Autor</option>
+        <option value="Ouvinte">Ouvinte</option>
       </select>
     </div>
-
     <div class="form-group" id="file-upload">
       <div class="custom-file">
         <input type="file" class="custom-file-input" id="pdf" name="pdf">
       </div>
     </div>
+    <input type="hidden" name="id" value="<?= $_GET['id'] ?>">
+    <input type="hidden" name="idUser" value="<?= $_GET['idUser'] ?>">
 
     <div class="form-group d-flex flex-column justify-content-center align-items-center custom-buttons">
       <button type="submit" class="btn btn-outline-dark custom-buttom">Inscrever</button>
