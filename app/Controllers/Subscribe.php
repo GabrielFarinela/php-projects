@@ -11,15 +11,16 @@ class Subscribe extends BaseController
   public function registerEnrollment()
   {
     $tipo = $this->request->getPost('inscricao');
+    $file = $this->request->getPost('pdf');
     $idEvent = intval($this->request->getVar('id')); 
     $idUser = intval($this->request->getVar('idUser'));
 
     $modelEnrollment = model(EnrollmentModel::class);
 
     $enrollmentData = [
-      'usuario' => $idUser,
       'tipo' => $tipo,
-      'evento' => $idEvent
+      'evento' => $idEvent,
+      'usuario' => $idUser,
     ];
 
     $modelEnrollment->insert($enrollmentData);

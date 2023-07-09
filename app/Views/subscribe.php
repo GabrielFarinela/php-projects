@@ -45,7 +45,6 @@
     <div class="form-group" id="file-upload">
       <div class="custom-file">
         <input type="file" class="custom-file-input" id="pdf" name="pdf">
-        <label class="custom-file-label" for="pdf">Escolher arquivo</label>
       </div>
     </div>
 
