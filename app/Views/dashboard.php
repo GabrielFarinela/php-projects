@@ -73,7 +73,11 @@
                                     <?php $temInscricao = true; ?>
                                     <tr>
                                         <th scope="row"><?php echo $evento['id']; ?></th>
-                                        <td><a class="custom-item-table-1" href="<?=base_url().'details?id=' .$evento['id'] ?>"><?php echo $evento['nome']; ?></a></td>
+                                        <td>
+                                            <a class="custom-item-table-1" href="<?= base_url().'details?id=' . $evento['id'] . '&idUser=' . $session->get('id') ?>">
+                                                <?php echo $evento['nome']; ?>
+                                            </a>
+                                        </td>
                                         <td><?php echo $evento['cidade']; ?></td>
                                         <td><?php echo $evento['pais']; ?></td>
                                         <td><strong><?php echo $inscricao['tipo']; ?></strong></td>

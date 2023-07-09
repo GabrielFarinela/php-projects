@@ -16,7 +16,8 @@ class Dashboard extends BaseController
 
     $data = [
       'eventos' => $modelEvent->buscaTodosEventos(),
-      'inscricoes' => $modelEnrollment->buscaInscriçõesPorId($session->id)
+      'inscricoes' => $modelEnrollment->buscaInscriçõesPorId($session->id),
+      'user' => $session
   ];
 
       return view('header') .

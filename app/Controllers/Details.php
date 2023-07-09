@@ -12,11 +12,12 @@ class Details extends BaseController
     $modelEvent = model(EventModel::class);
     $modelEnrollment = model(EnrollmentModel::class);
 
-    $id = $this->request->getVar('id'); 
+    $idEvent = $this->request->getVar('id'); 
+    $idUser = $this->request->getVar('idUser'); 
 
     $data = [
-      'evento' => $modelEvent->buscaEventosPorId($id),
-      'inscricoes' => $modelEnrollment->buscaInscriçõesPorId($id)
+      'evento' => $modelEvent->buscaEventosPorId($idEvent),
+      'inscricoes' => $modelEnrollment->buscaInscriçõesPorId($idUser)
     ];
 
     return view('header') .
