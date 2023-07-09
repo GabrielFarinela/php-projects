@@ -60,7 +60,7 @@
                         <th scope="col" style="width: 60%">Nome</th>
                         <th scope="col" style="width: 10%">Cidade</th>
                         <th scope="col" style="width: 10%">País</th>
-                        <th scope="col" style="width: 15%">Tipo de Inscrição</th>
+                        <th scope="col" style="width: 15%">Status</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -118,7 +118,7 @@
                                     <th scope="col" style="width: 60%">Nome</th>
                                     <th scope="col" style="width: 10%">Cidade</th>
                                     <th scope="col" style="width: 10%">País</th>
-                                    <th scope="col" style="width: 15%">Tipo de Inscrição</th>
+                                    <th scope="col" style="width: 15%">Status</th>
                                 </tr>
                             </thead>
                             <tbody>
