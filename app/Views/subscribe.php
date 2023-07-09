@@ -26,7 +26,7 @@
   </style>
 </head>
 
-<div class="custom-container">
+<div class="d-flex flex-column border border-dark p-5 custom-container">
   <h2 class="custom-title">Inscrição</h2>
   <form action="<?= base_url().'subscribeForm' ?>" method="post">
     <p><strong>Nome do evento: </strong><?php echo $evento['nome']; ?></p>
@@ -49,8 +49,8 @@
       </div>
     </div>
 
-    <div class="form-group">
-      <button type="submit" class="btn btn-outline-dark custom-buttom">Confirmar</button>
+    <div class="form-group d-flex flex-column justify-content-center align-items-center custom-buttons">
+      <button type="submit" class="btn btn-outline-dark custom-buttom">Inscrever</button>
       <a href="<?= base_url().'details?id=' . $_GET['id'] . '&idUser=' . $_GET['idUser'] ?>">
         <button type="button" class="btn btn-outline-dark custom-buttom">Voltar</button>
       </a>
