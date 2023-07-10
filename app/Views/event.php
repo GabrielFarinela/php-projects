@@ -34,6 +34,21 @@
     <p><strong>Sigla: </strong><?php echo $evento['silga']; ?></p>
     <p><strong>Início: </strong><?php echo date('d/m/Y', strtotime($evento['data_inicio'])); ?> - <strong>Fim: </strong><?php echo date('d/m/Y', strtotime($evento['data_fim'])); ?></p></p>
     <p><strong>Fim das inscrições: </strong><?php echo date('d/m/Y', strtotime($evento['fim_inscricao'])); ?></p>
+    <?php
+      $evento_id = $evento['id']; // ID do evento atual
+      $artigo_encontrado = false;
+
+      foreach ($inscricoes as $inscricao) {
+        if ($inscricao['evento'] == $evento_id && !empty($inscricao['artigo'])) {
+          $artigo_encontrado = true;
+          break;
+        }
+      }
+
+      if ($artigo_encontrado) {
+        echo '<p><strong>Arquivo: </strong><a href="'. base_url('./assets/' . $inscricao['artigo']) .'" target="_blank">Baixar</a></p>';
+      }
+    ?>
   </div>
   <div class="d-flex flex-column justify-content-center align-items-center custom-buttons">
     <?php if (strtotime($evento['data_inicio']) >= strtotime(date('Y-m-d'))): ?>

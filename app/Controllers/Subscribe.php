@@ -16,11 +16,32 @@ class Subscribe extends BaseController
     $tipo = $this->request->getPost('inscricao');
     $idEvent = (int) $this->request->getPost('id');
     $idUser = (int) $this->request->getPost('idUser');
+    $arquivo = $_FILES['arquivo'];
+
+    if (!empty($arquivo['name'])) {
+        $diretorio_destino = './assets/';
+
+        if (!is_dir($diretorio_destino)) {
+            mkdir($diretorio_destino, 0777, true);
+        }
+
+        $nome_arquivo = $arquivo['name'];
+        $caminho_arquivo = $diretorio_destino . $nome_arquivo;
+
+        if (move_uploaded_file($arquivo['tmp_name'], $caminho_arquivo)) {
+            echo 'Arquivo salvo com sucesso.';
+        } else {
+            echo 'Falha ao salvar o arquivo.';
+        }
+    } else {
+      $nome_arquivo = null;
+    }
   
     $enrollmentData = [
       'tipo' => $tipo,
       'evento' => $idEvent,
       'usuario' => $idUser,
+      'artigo' => $nome_arquivo
     ];
   
     $modelEnrollment->insert($enrollmentData);

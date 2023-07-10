@@ -34,7 +34,7 @@
     <p><strong>Email: </strong><?php echo $usuario['email']; ?></p>
     <p><strong>Instituição: </strong><?php echo $usuario['instituicao']; ?></p>
   </div>
-  <form action="<?= base_url().'subscribeForm' ?>" method="post">
+  <form action="<?= base_url().'subscribeForm' ?>" method="post" enctype="multipart/form-data">
     <div class="form-group">
       <label for="inscricao">Como deseja fazer a inscrição?</label>
       <select name="inscricao" id="inscricao">
@@ -44,7 +44,7 @@
     </div>
     <div class="form-group" id="file-upload">
       <div class="custom-file">
-        <input type="file" class="custom-file-input" id="pdf" name="pdf">
+        <input type="file" class="custom-file-input" id="arquivo" name="arquivo">
       </div>
     </div>
     <input type="hidden" name="id" value="<?= $_GET['id'] ?>">
@@ -65,7 +65,7 @@
     var fileUpload = document.getElementById("file-upload");
 
     selectInput.addEventListener("change", function() {
-      if (this.value === "autor") {
+      if (this.value === "Autor") {
         fileUpload.style.display = "block";
       } else {
         fileUpload.style.display = "none";
